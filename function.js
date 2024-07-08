@@ -121,7 +121,7 @@ Input: [1, 3, 3, 2, 3, 4, 4, 4, 4]
 Output: 4
 */
 function findMostFrequent(arr) {
-  // Code here
+  // Code here -- em dang lam nha
 }
 
 /*
