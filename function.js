@@ -17,6 +17,10 @@ function findMax() {
 
 // console.log(findMax());
 
+/// cach hai
+let numbers = [3, 5, 7, 9, 2, 8];
+let maxNumber = numbers.reduce((max, current) => (current > max ? current : max),numbers[0]);
+// console.log(maxNumber);
 /*
 2. Đếm số ký tự nguyên âm trong chuỗi
 Input: "hello world"
@@ -44,6 +48,16 @@ function sumOddNumbers() {
 }
 
 // console.log(sumOddNumbers());
+
+//cach khac 
+let numbers3 = [1, 2, 3, 4, 5];
+let sumOddNumbers3 = () => {
+  return numbers3
+  .filter(number => number % 2 !== 0)
+  .reduce((sum, current) => sum + current, 0);
+  
+};
+// console.log(sumOddNumbers3());
 /*
 4. Đảo ngược chuỗi
 Input: "hello world"
@@ -60,6 +74,11 @@ function reverseString() {
 }
 
 // console.log(reverseString());
+
+// cach hai
+let chain = "hello world";
+let chainIsland4 = () => chain.split('').reverse().join('');
+// console.log(chainIsland4());
 
 /*
 5. Tính giai thừa của một số
@@ -94,6 +113,15 @@ function isPalindrome(str) {
 
 // console.log(isPalindrome("radar"));
 
+//cach hai 
+let isPalindrome6 = (str) => {
+  let reversedStr = str.split('').reverse().join('');
+  return str === reversedStr;
+}
+let input = "radar";
+let result = isPalindrome6(input)
+// console.log(result);
+
 /*
 7. Loại bỏ các phần tử trùng lặp trong mảng
 Input: [1, 2, 2, 3, 4, 4, 5]
@@ -115,14 +143,52 @@ function removeDuplicates() {
 
 // console.log(removeDuplicates());
 
+// cach hai 
+let removeDuplicates7 = (array) => {
+  return array.filter((value, index) => {
+    for (let i = 0; i < index; i++) {
+      if (array[i] === value) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
+ 
+let input7 = [1, 2, 3, 2, 3, 4, 4, 5];
+let result7 = removeDuplicates7(input7);
+
+// console.log(result7);
+
+
 /*
 8. Tìm phần tử xuất hiện nhiều nhất trong mảng
 Input: [1, 3, 3, 2, 3, 4, 4, 4, 4]
 Output: 4
 */
-function findMostFrequent(arr) {
-  // Code here -- em dang lam nha
+function findMostFrequent() {
+  let arr = [1, 3, 3, 2, 3, 4, 4, 4, 4, 2];
+  let numberTimes = {};
+  let maxNumber = 0;
+  let result = "";
+
+  for (let index = 0; index < arr.length; index++) {
+    let element = arr[index];
+    if (numberTimes[element]) {
+      numberTimes[element]++;
+    } else {
+      numberTimes[element] = 1;
+    }
+
+    if (numberTimes[element] > maxNumber) {
+      maxNumber = numberTimes[element];
+      result = element;
+    }
+  }
+  return result;
 }
+
+// console.log(findMostFrequent());
 
 /*
 9. Chuyển đổi chuỗi thành dạng viết hoa chữ cái đầu của mỗi từ
