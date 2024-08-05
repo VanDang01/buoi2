@@ -6,8 +6,22 @@
 
 
 function ktNgayTongTuan(ngay) {
-    let ngayTrongTuan = ["chu nhat", "thu hai", "thu ba", "thu tu", "thu nam", "thu sau", "thu 7"];
-    return ngayTrongTuan[ngay] || "Ngay khong hop le!";
+    let ngayTrongTuan = ["chu nhat", "thu hai", "thu ba", "thu tu", "thu nam", "thu sau", "thu bay"];
+    return ngayTrongTuan[ngay] || "khong phai thu trong tuan";
 }
 
-console.log(ktNgayTongTuan(2));
+function ktNgayTongTuan2(ngay) {
+
+    let ngayTrongTuan = {
+        0: "chu nhat",
+        1: "thu hai", 
+        2: "thu ba", 
+        3: "thu tu", 
+        4: "thu nam", 
+        5: "thu sau", 
+        6: "thu bay"
+    };
+    return ngayTrongTuan[ngay] || "khong phai thu trong tuan";
+}
+
+console.log(ktNgayTongTuan2(7));

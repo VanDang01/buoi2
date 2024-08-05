@@ -6,7 +6,8 @@
 
 function  max(num) {
     let max = num[0];
-    for (let i = 1; i <= num.length; i++) {
+    for (let i = 1; i < num.length; i++) {
+        console.log(num[i]);
         let element = num[i];
         if (element > max) {
             max = element;
@@ -15,4 +16,16 @@ function  max(num) {
     return max;
 }
 
-console.log(max([3, 7, 5]));
+function  min(num) {
+    let min = num[0];
+    for (let i = 1; i < num.length; i++) {
+        console.log(num[i]);
+        let element = num[i];
+        if (element < min) {
+            min = element;
+        }
+    }
+    return min;
+}
+
+console.log(min([3, 7, 5, 9, 6]));

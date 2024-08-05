@@ -4,11 +4,12 @@
 - **Input**: Một số nguyên dương từ 1 đến 10 (ví dụ: `5`)*/
 
 function bangCuuChuong(so) {
-    let ketqua = "";
+    let BCC = "";
     for (let i = 0; i <= 10; i++) {
-        ketqua += so + " x " + i + " = " + (so * i) + "\n";
+        // BCC += so + " X " + i + " = " + (so * i) + "\n";
+        BCC += `${so} X ${i} = ${so * i} \n`;
     }
-    return ketqua;
+    return BCC
 }
 
 console.log(bangCuuChuong(5));
