@@ -7,18 +7,35 @@ Output: [1, 2, 3, 4, 5] */
 function xoaTrungLap(arr) {
     let result = [];
     for (let i = 0; i < arr.length; i++) {
-        let trungLap = false;
+        let isNotSame = false;
         for (let j = 0; j < result.length; j++) {
-            if (arr[i] === result[j]) {
-                trungLap = true;
+            if (arr[i] !== result[j]) {
+                isNotSame = true;
                 break;
             }
         }
-        if (!trungLap) {
+        if (!isNotSame) {
             result.push(arr[i]);
         }
     }
     return result;
+}
+
+function xoaTrung(arr2 = []) {
+    let result2 = [];
+    for (let i = 0; i < arr2.length; i++) {
+        const element = arr2[i];
+
+        if (! result2.includes(element)) {
+            result2.push(element);
+        }
+    }
+
+    return result2;
+}
+
+function xoaTrung2(arr2 = []) {
+    return arr2.reduce((result, item) => result.includes(item) ? result : [...result, item],[]);
 }
 
 // console.log(xoaTrungLap([1, 2, 2, 3, 4, 4, 5]));
@@ -29,18 +46,6 @@ function xoaTrungLap(arr) {
 Input: [10, 20, 30, 40, 50], 30
 Output: 2 */
 function funIndex(arr, num) {
-    for (let i = 0; i < arr.length; i++) {
-        const element = arr[i];
-        if (element === num) {
-            return i;
-        }
-    }
-    return "khong tim thay chi muc cua so";
-}
-
-
-
-function funIndex2(arr, num) {
     let result = [];
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
@@ -48,15 +53,28 @@ function funIndex2(arr, num) {
             result.push(i);
         }
     }
-    if (result.length === 0) {
-        return "khong tim thay chi muc cua so"
-    }
     return result;
 }
 
+console.log(funIndex([10, 20, 30, 40, 30, 50], 30));
 
-// console.log(funIndex([10, 20, 30, 40, 30, 50], 30));
-// console.log(funIndex2([10, 20, 30, 40, 30, 50], 30));
+/// 
+function funIndex3(arr = []) {
+    return arr.filter((element) => element ==  30) ;
+}
+console.log(funIndex3([10, 20, 30, 40, 30, 50]));
+
+
+
+///
+
+let funIndex2 = [10, 20, 30, 40, 30, 50];
+
+console.log(funIndex2.findIndex((element) => element == 30));
+
+
+
+
 
 /*
 3. Check if all elements in an array are even numbers
@@ -98,6 +116,24 @@ function mergeArr(arr1, arr2) {
 
 // console.log(mergeArr([1, 2, 3], [4, 5, 6]));
 
+
+// su dung concat
+
+function mergeArr2(arr1, arr2) {
+    return arr1.concat(arr2);
+}
+
+// console.log(mergeArr2([1, 2, 3], [4, 5, 6]));
+
+// dung toan tu spread 
+
+function mergeArr3(arr1, arr2) {
+    return [...arr1, ...arr2]
+}
+
+// console.log(mergeArr3([1, 2, 3], [4, 5, 6]));
+
+
 /* sap xep mang theo thu tu giam dan 
 Input: [5, 3, 8, 1, 2]
 Output: [8, 5, 3, 2, 1]*/
@@ -135,33 +171,41 @@ function mergeObject(obj1, obj2) {
 
 // console.log(mergeObject({a: 1, b: 2}, {c: 3, d: 4}));
 
+// su dung toan tu spread
+
+function mergeObject2(obj1, obj2) {
+    return {...obj1, ...obj2};
+}
+
+// console.log(mergeObject2({a: 1, b: 2}, {c: 3, d: 4}));
+
 /*
 6. Find the value of a property in a nested object
 Input: {a: {b: {c: 3}}}, 'a.b.c'
 Output: 3*/
 
-function findTheValue(obj, str) {
-    let keys = [];
-    let temp = '';
-    for (let i = 0; i < str.length; i++) {
-        let element = str[i];
-        if (element === '.') {
-            keys.push(temp);
-            temp = '';
-        } else {
-            temp += str[i];
-        }
-    }
-    keys.push(temp);
+// function findTheValue(obj, str) {
+//     let keys = [];
+//     let temp = '';
+//     for (let i = 0; i < str.length; i++) {
+//         let element = str[i];
+//         if (element === '.') {
+//             keys.push(temp);
+//             temp = '';
+//         } else {
+//             temp += str[i];
+//         }
+//     }
+//     keys.push(temp);
 
-    for (let i = 0; i < keys.length; i++) {
-        if (obj[keys[i]] === undefined) {
-            return undefined;
-        } 
-        obj = obj[keys[i]];
-    }
-    return obj;
-}
+//     for (let i = 0; i < keys.length; i++) {
+//         if (obj[keys[i]] === undefined) {
+//             return undefined;
+//         } 
+//         obj = obj[keys[i]];
+//     }
+//     return obj;
+// }
 
 // console.log(findTheValue({a: {b: {c: 3}}}, 'a.b.c'));
 
@@ -233,8 +277,8 @@ function getLength(obj) {
 Input: {a: 1, b: 2, c: 3}, 'b'
 Output: {a: 1, c: 3}*/
 
-function remove(obj, property) {
-    delete obj[property];
+function remove(obj, key) {
+    delete obj[key];
     return obj;
 }
 
@@ -260,4 +304,4 @@ function arrToObj(arr, stt) {
 }
 let arr = [{id: 1, name: 'John'}, {id: 2, name: 'Jane'}];
 
-console.log(arrToObj(arr, 'id'));
+// console.log(arrToObj(arr, 'id'));
