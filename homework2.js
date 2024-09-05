@@ -137,3 +137,19 @@ function remove(obj, key) {
 }
 
 // console.log(remove({a: 1, b: 2, c: 3}, 'b'));
+function arrToObj() {
+    let result = {};
+    let groupIndex = 1;
+    let ageMap = {};
+
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        const age = element.age;
+        if (!ageMap[age]) {
+            ageMap[age] = groupIndex++;
+            result[ageMap[age]] = [];
+        }
+        result[ageMap[age]].push(element);
+    }
+    return result;
+}

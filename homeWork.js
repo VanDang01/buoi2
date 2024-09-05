@@ -56,13 +56,13 @@ function funIndex(arr, num) {
     return result;
 }
 
-console.log(funIndex([10, 20, 30, 40, 30, 50], 30));
+// console.log(funIndex([10, 20, 30, 40, 30, 50], 30));
 
 /// 
 function funIndex3(arr = []) {
     return arr.filter((element) => element ==  30) ;
 }
-console.log(funIndex3([10, 20, 30, 40, 30, 50]));
+// console.log(funIndex3([10, 20, 30, 40, 30, 50]));
 
 
 
@@ -70,7 +70,7 @@ console.log(funIndex3([10, 20, 30, 40, 30, 50]));
 
 let funIndex2 = [10, 20, 30, 40, 30, 50];
 
-console.log(funIndex2.findIndex((element) => element == 30));
+// console.log(funIndex2.findIndex((element) => element == 30));
 
 
 
@@ -92,7 +92,12 @@ function soChan(number) {
     return true;
 }
 
+function soChan2(number = []) {
+    return number.every(element => element % 2 === 0);
+}
+
 // console.log(soChan([2, 4, 6, 8, 10]));
+// console.log(soChan2([2, 4, 6, 8, 10]));
 
 /* 
 4. Merge two arrays 
@@ -151,11 +156,16 @@ function sapXep(arr) {
     return arr;
 }
 
+function sapXep2(arr= []) {
+    return arr.sort((a, b) => b - a);
+}
+
+// console.log(sapXep([5, 3, 8, 1, 2]));
 // console.log(sapXep([5, 3, 8, 1, 2]));
 
 /*
 5. Merge two objects
-Input: {a: 1, b: 2}, {c: 3, d: 4}
+Input: {: 1, b: 2a}, {c: 3, d: 4}
 Output: {a: 1, b: 2, c: 3, d: 4}*/
 
 function mergeObject(obj1, obj2) {
@@ -207,6 +217,36 @@ Output: 3*/
 //     return obj;
 // }
 
+
+function getValue(obj2, path = []) {
+    const keys = path.split('.');
+    
+    let result = obj2;
+
+    for (let key of keys) {
+        if (result[key] !== undefined) {
+            result = result[key];
+        } else {
+            return undefined;
+        }
+    }
+
+    return result;
+}
+
+const obj2 = {a: {b: {c: 3}}};
+const path = 'a.b.c';
+
+console.log(getValue(obj2, path));
+
+
+
+// function getValue2(obj, path) {
+//     return path.split('.').reduce((acc, key) => acc && acc[key], obj);
+//   }
+  
+//   console.log(getValue2({a: {b: {c: 3}}}, 'a.b.c')); 
+  
 // console.log(findTheValue({a: {b: {c: 3}}}, 'a.b.c'));
 
 /*
@@ -222,7 +262,12 @@ function convertObjKey(obj) {
     return result;
 }
 
+function convertObjKey2(obj) {
+    return Object.keys(obj);
+}
+
 // console.log(convertObjKey({a: 1, b: 2, c: 3}));
+// console.log(convertObjKey2({a: 1, b: 2, c: 3}));
 
 /*
 8. Convert an object to an array of values
@@ -237,7 +282,10 @@ function convertObjValue(obj) {
     return result;
 }
 
+let convertObjValue2 = (obj) => Object.values(obj);
+
 // console.log(convertObjValue({a: 1, b: 2, c: 3}));
+// console.log(convertObjValue2({a: 1, b: 2, c: 3}));
 
 /* 
 9. Check if an object contains a specific property
@@ -253,7 +301,18 @@ function checkObj(obj, property) {
     return false;
 }
 
+function checkObj2(obj, property) {
+    return property in obj;
+}
+
+function checkObj3() {
+    return Object.keys(obj);    
+}
+ let obj = {a: 1, b: 2, c: 3};
+//  let property = 'b';
 // console.log(checkObj({a: 1, b: 2, c: 3}, 'b'));
+// console.log(checkObj2({a: 1, b: 2, c: 3}, 'b'));
+// console.log(checkObj3().includes('d'));
 
 /*
 10. Get the length of an object (number of properties)
@@ -270,7 +329,13 @@ function getLength(obj) {
     return count;
 }
 
+
+function getLength2(obj) {
+    return Object.keys(obj).length;
+}
+
 // console.log(getLength({a: 1, b: 2, c: 3}));
+// console.log(getLength2({a: 1, b: 2, c: 3}));
 
 /* 
 11. Remove a property from an obj
@@ -287,21 +352,63 @@ function remove(obj, key) {
 /*
 12. Get all property names and values in a nested object
 Input: {a: 1, b: {c: 2, d: 3}}
-Output: ['a: 1', 'b.c: 2', 'b.d: 3']*/
+Output: {'a: 1', 'b.c: 2', 'b.d: 3'}*/
+
+
+
+
+function getAllPropety(obj) {
+    // 1. for tung doi tuong trong object
+    // 2. sop sanh tung doi tuong trong object voi number , neu la number thi in ra khong thi tiep tuc voi doi tuong tiep theo .
+    // 
+    for (const key in obj) {
+    }
+}
+
+// console.log(getAllPropety({a: 1, b: {c: 2, d: 3}}));
 
 /*
 13. Convert an array of objects to a single object using a property as the key
 Input: [{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'id'
 Output: {1: {id: 1, name: 'John'}, 2: {id: 2, name: 'Jane'}}*/
 
-function arrToObj(arr, stt) {
+
+function arrToObj(arr) {
     let result = {};
+    let ageMap = {};
+
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        result[element[stt]] = element;
+        const age = element.age;
+        if (!ageMap[age]) {
+            ageMap[age] = age;
+            result[ageMap[age]] = [];
+        }
+        result[ageMap[age]].push(element);
     }
+    
     return result;
 }
-let arr = [{id: 1, name: 'John'}, {id: 2, name: 'Jane'}];
 
-// console.log(arrToObj(arr, 'id'));
+let arr = [
+    {id: 1, name: 'John', age: 18},
+    {id: 2, name: 'John', age: 19},
+    {id: 3, name: 'John', age: 18},
+    {id: 4, name: 'John', age: 21}
+];
+
+
+const arrToObj2 = (arr, key) => {
+    return arr.reduce((accumulator,currentValue) => {  
+        const keyValue = currentValue[key];
+        if (!accumulator[keyValue]) {
+            accumulator[keyValue] = [];
+        }
+        accumulator[keyValue].push(currentValue);
+        return accumulator;
+    }, {});
+};
+    
+
+// console.log(arrToObj(arr));
+// console.log(arrToObj2(arr, 'age'));
