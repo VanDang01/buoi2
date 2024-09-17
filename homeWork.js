@@ -227,17 +227,19 @@ function getValue(obj2, path = []) {
         if (result[key] !== undefined) {
             result = result[key];
         } else {
+            console.log(`khong tim thay value : ${key}`);
             return undefined;
         }
+        
     }
 
     return result;
 }
 
 const obj2 = {a: {b: {c: 3}}};
-const path = 'a.b.c';
+const path = 'a.b.c.d';
 
-console.log(getValue(obj2, path));
+// console.log(getValue(obj2, path));
 
 
 
@@ -358,14 +360,24 @@ Output: {'a: 1', 'b.c: 2', 'b.d: 3'}*/
 
 
 function getAllPropety(obj) {
-    // 1. for tung doi tuong trong object
+    // 1. check neu k phai obj thi luu vo result , la obj thi de quy lai func hien tai
     // 2. sop sanh tung doi tuong trong object voi number , neu la number thi in ra khong thi tiep tuc voi doi tuong tiep theo .
     // 
-    for (const key in obj) {
-    }
+
+    let result = {};
+    result['a'] = obj.a;
+    console.log(result);
+    // for (const key in obj) {
+    //     console.log(key);
+    //     if (value === Object) {
+    //          result = result[key];
+    //     } else {
+    //         result.push(key);
+    //     }
+    // }
 }
 
-// console.log(getAllPropety({a: 1, b: {c: 2, d: 3}}));
+console.log(getAllPropety({a: 1, b: {c: 2, d: 3}}));
 
 /*
 13. Convert an array of objects to a single object using a property as the key
