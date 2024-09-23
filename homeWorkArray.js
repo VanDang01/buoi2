@@ -22,14 +22,33 @@ arr[1] = "Dang"
 
 arr.pop();
 
+// cach hai
+arr.splice(-1,1);
+
 // console.log(arr);
+
+// cach ba 
+
+const newArr = arr.splice(0,-1);
+
+// console.log(newArr);
 
 
 // 5. Create an Item and Add it to the Beginning of the Array
 
 arr.unshift(0);
-
 // console.log(arr);
+
+
+//cach 2
+
+const newArr2 = [1].concat(arr);
+
+// console.log(newArr2);
+
+//cach 3
+const newArr3 = [1, ...arr];
+// console.log(newArr3);
 
 // 6. Read All Items in the Array
 
@@ -55,6 +74,17 @@ let mergeArr1 = arr.concat(arr1);
 
 // console.log(mergeArr1);
 
+// cach 2
+const mergeArr2 = [...arr, ...arr1];
+
+// console.log(mergeArr2);
+
+//cach 3
+
+arr.push(...arr1);
+
+// console.log(arr);
+
 // 10. Find and Delete an Item Based on Value
 
 let arr2 = ["item1", "item2", "BB", "TranVanDang", "item4"]
@@ -63,11 +93,54 @@ arr = arr2.filter(item => item !== deleteValue);
 
 // console.log(arr);
 
+
+//cach 2
+const index = arr.findIndex(item => item === deleteValue);
+if (index !== -1) {
+    arr.splice(index, 1);
+}
+
+
+//cach 3
+
+for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+    if (element === deleteValue) {
+        arr.splice(i, 1);
+        break;
+    }
+    
+}
+// console.log(arr);
+
+//cach 4 
+
+const newArr6 = arr.reduce((acc, item) => {
+    if (item !== deleteValue) {
+        acc.push(item);
+    }
+    return acc;
+},[]);
+
+// console.log(newArr6);
+
 // 11. Add Multiple Items to the End of the Array
 
 arr.push("item5", "item6");
 
 // console.log(arr);
+
+//cach 2
+ const newArr4 = arr.concat([4,5,6]);
+
+// console.log(newArr4);
+
+//cach 3
+
+const newArr5 = arr.concat([...arr,4,5,6]);
+
+// console.log(newArr5);
+
 
 // 12. Replace an Item at a Specific Index
 
